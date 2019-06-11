@@ -1,10 +1,10 @@
-const Usuario = require('../models/usuario');
+const Cliente = require('../models/cliente');
 
 exports.get = (req, res, next) => {
   try {
-    Usuario.find().exec(function(err, usuarios) {
+    Cliente.find().exec(function(err, clientes) {
       if (err) return handleError(err);
-      res.status(200).send({ clientes: usuarios });
+      res.status(200).send({ clientes: clientes });
     });
   } catch (err) {
     console.log('error: ', err);
@@ -13,10 +13,10 @@ exports.get = (req, res, next) => {
 
 exports.post = (req, res, next) => {
   try {
-    var usuario = new Usuario(req.body);
-    usuario.save(function(err, usuario) {
+    var cliente = new Cliente(req.body);
+    cliente.save(function(err, clienteSalvo) {
       if (err) return handleError(err);
-      res.status(201).send({ cliente: usuario });
+      res.status(201).send({ cliente: clienteSalvo });
     });
   } catch (err) {
     console.log('error: ', err);
