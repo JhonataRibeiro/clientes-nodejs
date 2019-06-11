@@ -14,17 +14,25 @@ const create = req => {
 };
 
 const atualiza = req => {
-  const { _id } = req.params;
-  console.log('_id', _id);
+  const { id } = req.params;
   const { body } = req;
 
-  return Cliente.findByIdAndUpdate(_id, body);
+  return Cliente.findByIdAndUpdate(id, body, cliente => {
+    return cliente;
+  });
+};
 
-  // return Cliente.update(body).then(result => result);
+const excluir = req => {
+  const { id } = req.params;
+
+  return Cliente.findByIdAndDelete(id, cliente => {
+    return cliente;
+  });
 };
 
 module.exports = {
   create,
   get,
-  atualiza
+  atualiza,
+  excluir
 };
