@@ -1,0 +1,28 @@
+{
+  "name": "clientes-nodejs",
+  "version": "1.0.0",
+  "description": "app nodejs para clientes ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JhonataRibeiro/clientes-nodejs.git"
+  },
+  "author": "jribeiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JhonataRibeiro/clientes-nodejs/issues"
+  },
+  "homepage": "https://github.com/JhonataRibeiro/clientes-nodejs#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.2.7",
+    "mongoose": "^5.5.14"
+  }
+}
