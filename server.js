@@ -2,11 +2,19 @@ const express = require('express');
 const mongodb = require('mongodb');
 const config = require('./config/db');
 const Usuario = require('./models/usuario');
+const mongoose = require('mongoose');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const client = mongodb.MongoClient;
+
+setTimeout(() => {
+  mongoose.connect('mongodb://mongo:27017/clientes', {
+    useNewUrlParser: true
+  });
+}, 2000);
+
 setTimeout(() => {
   client.connect('mongodb://mongo:27017/clientes', function(err, db) {
     if (err) {

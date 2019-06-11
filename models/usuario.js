@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/clientes', {
-  useNewUrlParser: true
-});
+const Schema = mongoose.Schema;
 
-const UsuarioSchema = new mongoose.Schema({
+const usuarioSchema = new Schema({
   nome: { type: String, default: '' },
   email: { type: String, default: '' },
   cep: { type: String, default: '' },
@@ -12,5 +10,5 @@ const UsuarioSchema = new mongoose.Schema({
   conta: { type: Number }
 });
 
-const Usuario = mongoose.model('Usuario', UsuarioSchema);
+const Usuario = mongoose.model('Usuario', usuarioSchema);
 module.exports = Usuario;
