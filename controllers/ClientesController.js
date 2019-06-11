@@ -19,9 +19,14 @@ const post = async (req, res) => {
   }
 };
 
-exports.put = (req, res, next) => {
+const put = async (req, res) => {
   let id = req.params.id;
-  res.status(201).send(`Requisição recebida com sucesso! ${id}`);
+  try {
+    const result = await service.atualiza(req);
+    return responseJson(res, result);
+  } catch (error) {
+    return responseErrorJson(res, 'cliente::get', error);
+  }
 };
 
 exports.delete = (req, res, next) => {
@@ -54,5 +59,6 @@ exports.delete = (req, res, next) => {
 
 module.exports = {
   get,
-  post
+  post,
+  put
 };

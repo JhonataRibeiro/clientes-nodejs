@@ -9,12 +9,22 @@ const get = req => {
 };
 
 const create = req => {
-  console.log('req no servico', req);
   const { body } = req;
   return Cliente.create(body).then(result => result);
 };
 
+const atualiza = req => {
+  const { _id } = req.params;
+  console.log('_id', _id);
+  const { body } = req;
+
+  return Cliente.findByIdAndUpdate(_id, body);
+
+  // return Cliente.update(body).then(result => result);
+};
+
 module.exports = {
   create,
-  get
+  get,
+  atualiza
 };
