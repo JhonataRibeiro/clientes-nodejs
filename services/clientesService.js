@@ -1,10 +1,10 @@
 const Cliente = require('../models/cliente');
 
 const get = req => {
-  const { _id } = req.params;
-  const options = _id ? _id : req.query;
+  const { id } = req.params;
+  const options = id ? id : req.query;
 
-  const method = _id ? 'findById' : 'find';
+  const method = id ? 'findById' : 'find';
   return Cliente[method](options).then(result => result);
 };
 

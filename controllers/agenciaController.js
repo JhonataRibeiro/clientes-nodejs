@@ -1,32 +1,45 @@
-const Agencia = require('../models/agencia');
+const service = require('../services/agenciasService');
+const { responseErrorJson, responseJson } = require('../utils/utils');
 
-exports.get = (req, res, next) => {
+const get = async (req, res) => {
   try {
-    Agencia.find().exec(function(err, agencias) {
-      if (err) return handleError(err);
-      res.status(200).send({ agencias: agencias });
-    });
-  } catch (err) {
-    console.log('error: ', err);
+    const result = await service.get(req);
+    return responseJson(res, result);
+  } catch (error) {
+    return responseErrorJson(res, 'agencia::get', error);
   }
 };
 
-exports.post = (req, res, next) => {
+const post = async (req, res) => {
   try {
-    var agencia = new Agencia(req.body);
-    agencia.save(function(err, agencia) {
-      if (err) return handleError(err);
-      res.status(201).send({ agencia: agencia });
-    });
-  } catch (err) {
-    console.log('error: ', err);
+    const result = await service.create(req);
+    return responseJson(res, result);
+  } catch (error) {
+    return responseErrorJson(res, 'agencia::post', error);
   }
 };
-exports.put = (req, res, next) => {
-  let id = req.params.id;
-  res.status(201).send(`Requisição recebida com sucesso! ${id}`);
+
+const put = async (req, res) => {
+  try {
+    const result = await service.atualiza(req);
+    return responseJson(res, result);
+  } catch (error) {
+    return responseErrorJson(res, 'agencia::put', error);
+  }
 };
-exports.delete = (req, res, next) => {
-  let id = req.params.id;
-  res.status(200).send(`Requisição recebida com sucesso! ${id}`);
+
+const excluir = async (req, res) => {
+  try {
+    const result = await service.excluir(req);
+    return responseJson(res, result);
+  } catch (error) {
+    return responseErrorJson(res, 'agencia::delete', error);
+  }
+};
+
+module.exports = {
+  get,
+  post,
+  put,
+  excluir
 };
