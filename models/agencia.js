@@ -7,5 +7,5 @@ const agenciaSchema = new Schema({
   conta: { type: Number }
 });
 
-const Agencia = mongoose.model('Agencia', agenciaSchema);
-module.exports = Agencia;
+const agencia = mongoose.model('Agencia', agenciaSchema);
+module.exports = agencia;

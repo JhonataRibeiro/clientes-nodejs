@@ -1,10 +1,10 @@
-const Usuario = require('../models/usuario');
+const Agencia = require('../models/agencia');
 
 exports.get = (req, res, next) => {
   try {
-    Usuario.find().exec(function(err, usuarios) {
+    Agencia.find().exec(function(err, agencias) {
       if (err) return handleError(err);
-      res.status(200).send({ clientes: usuarios });
+      res.status(200).send({ agencias: agencias });
     });
   } catch (err) {
     console.log('error: ', err);
@@ -13,21 +13,19 @@ exports.get = (req, res, next) => {
 
 exports.post = (req, res, next) => {
   try {
-    var usuario = new Usuario(req.body);
-    usuario.save(function(err, usuario) {
+    var agencia = new Agencia(req.body);
+    agencia.save(function(err, agencia) {
       if (err) return handleError(err);
-      res.status(201).send({ cliente: usuario });
+      res.status(201).send({ agencia: agencia });
     });
   } catch (err) {
     console.log('error: ', err);
   }
 };
-
 exports.put = (req, res, next) => {
   let id = req.params.id;
   res.status(201).send(`Requisição recebida com sucesso! ${id}`);
 };
-
 exports.delete = (req, res, next) => {
   let id = req.params.id;
   res.status(200).send(`Requisição recebida com sucesso! ${id}`);
