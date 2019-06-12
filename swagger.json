@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "API de Cliente",
+    "title": "API de Clientes",
     "description": "API para clientes dos bancos",
     "license": {
       "name": "MIT",
@@ -141,7 +141,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Agencias"
+              "$ref": "#/definitions/Agencia"
             }
           }
         }
@@ -176,7 +176,7 @@
           "200": {
             "description": "A agencias foi deletada",
             "schema": {
-              "$ref": "#/definitions/Agencias"
+              "$ref": "#/definitions/Agencia"
             }
           }
         }
