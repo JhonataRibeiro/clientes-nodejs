@@ -46,70 +46,70 @@
         }
       },
       "get": {
-        "tags": ["Users"],
-        "summary": "Get all users in system",
+        "tags": ["Clientes"],
+        "summary": "retorna todos os clientes do sistema",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Users"
+              "$ref": "#/definitions/Clientes"
             }
           }
         }
       }
     },
-    "/users/{userId}": {
+    "/clientes/{id}": {
       "parameters": [
         {
-          "name": "userId",
+          "name": "id",
           "in": "path",
           "required": true,
-          "description": "ID of user that we want to find",
+          "description": "ID do usuário a ser deletado",
           "type": "string"
         }
       ],
       "get": {
-        "tags": ["Users"],
-        "summary": "Get user with given ID",
+        "tags": ["Clientes"],
+        "summary": "Obter cliente pelo ID passado",
         "responses": {
           "200": {
-            "description": "User is found",
+            "description": "Cliente encontrado",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Cliente"
             }
           }
         }
       },
       "delete": {
-        "summary": "Delete user with given ID",
-        "tags": ["Users"],
+        "summary": "Deleta um cliente dado um ID",
+        "tags": ["Clientes"],
         "responses": {
           "200": {
-            "description": "User is deleted",
+            "description": "O cliente  foi deletado",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Cliente"
             }
           }
         }
       },
       "put": {
-        "summary": "Update user with give ID",
-        "tags": ["Users"],
+        "summary": "Atualiza um cliente dado um ID",
+        "tags": ["Clientes"],
         "parameters": [
           {
-            "name": "user",
+            "name": "clientes",
             "in": "body",
-            "description": "User with new values of properties",
+            "description": "Cliente para atualizar",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Cliente"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "User is updated",
+            "description": "Cliente é atualizado",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Cliente"
             }
           }
         }
@@ -160,6 +160,10 @@
     "Users": {
       "type": "array",
       "$ref": "#/definitions/User"
+    },
+    "Clientes": {
+      "type": "array",
+      "$ref": "#/definitions/Cliente"
     },
     "Agencia": {
       "bairro": {
