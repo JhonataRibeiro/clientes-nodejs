@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Yet Another Node.js Blogg Application API",
-    "description": "Yet Another Node.js Blogg Application API",
+    "title": "API de Cliente",
+    "description": "API para clientes dos bancos",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
@@ -11,12 +11,7 @@
   },
   "host": "localhost:3000",
   "basePath": "/",
-  "tags": [
-    {
-      "name": "Users",
-      "description": "API for users in the system"
-    }
-  ],
+
   "schemes": ["http"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
@@ -114,6 +109,100 @@
           }
         }
       }
+    },
+    "/agencias": {
+      "post": {
+        "tags": ["Agencias"],
+        "description": "Cria nova agência no sistema",
+        "parameters": [
+          {
+            "name": "agencia",
+            "in": "body",
+            "description": "Agência que deseja criar:",
+            "schema": {
+              "$ref": "#/definitions/Agencia"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Nova agência criada",
+            "schema": {
+              "$ref": "#/definitions/Agencia"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Agencias"],
+        "summary": "retorna todas as agências do sistema",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Agencias"
+            }
+          }
+        }
+      }
+    },
+    "/agencias/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID da agência a ser criada",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Agencias"],
+        "summary": "Obter agências pelo ID",
+        "responses": {
+          "200": {
+            "description": "Agências encontrada",
+            "schema": {
+              "$ref": "#/definitions/Agencia"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta uma agências dado um ID",
+        "tags": ["Agencias"],
+        "responses": {
+          "200": {
+            "description": "A agencias foi deletada",
+            "schema": {
+              "$ref": "#/definitions/Agencias"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza uma agência dado um ID",
+        "tags": ["Agencias"],
+        "parameters": [
+          {
+            "name": "agencias",
+            "in": "body",
+            "description": "Agencia para atualizar",
+            "schema": {
+              "$ref": "#/definitions/Agencia"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agência é atualizada",
+            "schema": {
+              "$ref": "#/definitions/Agencia"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -137,29 +226,6 @@
           "$ref": "#/definitions/Agencia"
         }
       }
-    },
-    "User": {
-      "required": ["email", "_id"],
-      "properties": {
-        "_id": {
-          "type": "string",
-          "uniqueItems": true
-        },
-        "email": {
-          "type": "string",
-          "uniqueItems": true
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
-        }
-      }
-    },
-    "Users": {
-      "type": "array",
-      "$ref": "#/definitions/User"
     },
     "Clientes": {
       "type": "array",
