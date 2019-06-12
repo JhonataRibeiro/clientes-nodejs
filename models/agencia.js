@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const agenciaSchema = new Schema({
-  bairro: { type: String, default: '' },
+  banco: { type: String },
   agencia: { type: Number },
+  nomeAgencia: { type: String },
   conta: { type: Number }
 });
 

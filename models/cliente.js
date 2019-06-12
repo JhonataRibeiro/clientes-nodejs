@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 const { agencia } = require('../models/agencia');
 
 const clienteSchema = new Schema({
-  nome: { type: String, default: '' },
+  nome: { type: String, required: true, default: '' },
   email: { type: String, default: '' },
-  cep: { type: String, default: '' },
+  cep: { type: Number, default: '' },
   bairro: { type: String, default: '' },
-  agencia: [{ type: Schema.Types.ObjectId, ref: 'Agencia' }]
+  agencias: [{ type: Schema.Types.ObjectId, ref: 'Agencia' }]
 });
 
 const Cliente = mongoose.model('Cliente', clienteSchema);

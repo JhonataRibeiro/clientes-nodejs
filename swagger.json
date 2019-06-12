@@ -2,19 +2,19 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Clientes",
-    "description": "Clientes",
+    "title": "Yet Another Node.js Blogg Application API",
+    "description": "Yet Another Node.js Blogg Application API",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
     }
   },
   "host": "localhost:3000",
-  "basePath": "/api/v1",
+  "basePath": "/",
   "tags": [
     {
-      "name": "Clientes",
-      "description": "Clientes"
+      "name": "Users",
+      "description": "API for users in the system"
     }
   ],
   "schemes": ["http"],
@@ -24,23 +24,23 @@
     "/clientes": {
       "post": {
         "tags": ["Clientes"],
-        "description": "Inserir novo cliente",
+        "description": "Cria novo cliente no sistema",
         "parameters": [
           {
-            "nome": "user",
+            "name": "cliente",
             "in": "body",
-            "description": "User that we want to create",
+            "description": "Usuário que deseja criar:",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Cliente"
             }
           }
         ],
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "New user is created",
+            "description": "Novo usuario criado",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Cliente"
             }
           }
         }
@@ -117,6 +117,27 @@
     }
   },
   "definitions": {
+    "Cliente": {
+      "required": ["nome"],
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "cep": {
+          "type": "number"
+        },
+        "bairro": {
+          "type": "string"
+        },
+        "agencias": {
+          "type": "array",
+          "$ref": "#/definitions/Agencia"
+        }
+      }
+    },
     "User": {
       "required": ["email", "_id"],
       "properties": {
@@ -124,28 +145,32 @@
           "type": "string",
           "uniqueItems": true
         },
-        "nome": {
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "lastName": {
           "type": "string"
         },
-        "cep": {
+        "firstName": {
           "type": "string"
-        },
-        "bairro": {
-          "type": "string"
-        },
-        "agencia": {
-          "type": "array",
-          "$ref": "#/definitions/Agencia"
         }
       }
-    },
-    "Agencia": {
-      "type": "array",
-      "$ref": "#/definitions/User"
     },
     "Users": {
       "type": "array",
       "$ref": "#/definitions/User"
+    },
+    "Agencia": {
+      "bairro": {
+        "type": "string"
+      },
+      "agencia": {
+        "type": "number"
+      },
+      "conta": {
+        "type": "number"
+      }
     }
   }
 }
