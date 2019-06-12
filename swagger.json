@@ -24,7 +24,7 @@
           {
             "name": "cliente",
             "in": "body",
-            "description": "Usuário que deseja criar:",
+            "description": "Usuário que deseja criar. ATENÇÃO: Agencias deve ser um array com a o id de uma agência criada. exemplo: _id:'213dsa432fds4432'",
             "schema": {
               "$ref": "#/definitions/Cliente"
             }
@@ -228,18 +228,23 @@
       }
     },
     "Clientes": {
-      "type": "array",
+      "type": "Array",
       "$ref": "#/definitions/Cliente"
     },
     "Agencia": {
-      "bairro": {
-        "type": "string"
-      },
-      "agencia": {
-        "type": "number"
-      },
-      "conta": {
-        "type": "number"
+      "properties": {
+        "banco": {
+          "type": "string"
+        },
+        "agencia": {
+          "type": "number"
+        },
+        "nomeAgencia": {
+          "type": "number"
+        },
+        "conta": {
+          "type": "number"
+        }
       }
     }
   }
