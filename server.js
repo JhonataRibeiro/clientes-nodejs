@@ -1,5 +1,4 @@
 const express = require('express');
-const mongodb = require('mongodb');
 const config = require('./config/db');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
